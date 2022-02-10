@@ -15,7 +15,7 @@ module.exports = {
           association: 'addresses',
           attributes: ['zipcode', 'street', 'number'],
           where: {
-            street: 'Rua Alfredo Brunch' 
+            street: 'Rua Amanda Olavo' 
           },
         },
         { 

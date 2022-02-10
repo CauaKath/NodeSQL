@@ -1,27 +1,8 @@
 const User = require('../models/User');
 const Tech = require('../models/Tech');
+const { Op } = require('sequelize');
 
 module.exports = {
-  async index(req, res) {
-    const { user_id } = req.params;
- 
-    const user = await User.findByPk(user_id, {
-      include: { 
-        association: 'techs', 
-        attributes: ['name'], 
-        through: { 
-          attributes: [] 
-        } 
-      }
-    });
-
-    if (!user) {
-      return res.status(400).json({ error: 'User not found' });
-    }
-
-    return res.json(user.techs);
-  },
-
   async store(req, res) {
     const { user_id } = req.params;
     const { name } = req.body;
@@ -40,6 +21,26 @@ module.exports = {
 
     return res.json(tech);
   },
+  
+  async index(req, res) {
+    const { user_id } = req.params;
+ 
+    const user = await User.findByPk(user_id, {
+      include: { 
+        association: 'techs', 
+        attributes: ['name'], 
+        through: { 
+          attributes: [] 
+        } 
+      }
+    });
+
+    if (!user) {
+      return res.status(400).json({ error: 'User not found' });
+    }
+
+    return res.json(user);
+  },
 
   async delete(req, res) {
     const { user_id } = req.params;
@@ -54,6 +55,10 @@ module.exports = {
     const tech = await Tech.findOne({
       where: { name }
     });
+
+    if (!tech) {
+      return res.status(400).json({ error: 'Tech not found' });
+    }
 
     await user.removeTech(tech);
 
