@@ -202,7 +202,7 @@
   * E se possuem alguma tecnologia cujo nome inicia com 'Java'
   ###### GET: localhost:3333/report
   ###### Return:
-  ````json
+  ```json
     [
       {
         "name": "Cauã",
@@ -225,4 +225,3 @@
       }
     ]
   ```
-  
