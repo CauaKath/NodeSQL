@@ -1,5 +1,9 @@
 # NodeSQL
 
+* API construída utilizando as tecnologias Node.js, Sequelize, Express, Mysql2
+* Para treinar os conhecimentos básicos de CRUD
+* Utilizar um Query Builder para conexão com SQL
+
 ### Manual para uso de rotas
 
   ## Users 
