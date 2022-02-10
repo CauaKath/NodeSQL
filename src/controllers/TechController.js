@@ -39,7 +39,7 @@ module.exports = {
       return res.status(400).json({ error: 'User not found' });
     }
 
-    return res.json(user);
+    return res.json(user.techs);
   },
 
   async delete(req, res) {

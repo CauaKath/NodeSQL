@@ -48,7 +48,7 @@ module.exports = {
       return res.status(400).json({ error: 'User not found' });
     }
 
-    const address = await Address.findOne({
+    let address = await Address.findOne({
       where: {
         zipcode
       }
@@ -64,7 +64,13 @@ module.exports = {
       }
     });
 
-    return res.json({ zipcode, street, number });
+    address = await Address.findOne({
+      where: {
+        zipcode
+      }
+    });
+
+    return res.json(address);
   },
 
   async delete(req, res) {
